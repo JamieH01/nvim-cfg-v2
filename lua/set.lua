@@ -3,6 +3,8 @@ local api = vim.api
 
 opt.guicursor = ""
 
+vim.g.mapleader = " "
+
 opt.nu = true
 opt.relativenumber = true
 
@@ -19,7 +21,7 @@ opt.scrolloff = 4
 
 opt.swapfile = false
 opt.backup = false
-opt.undodir = "/home/jamie/.undodir"
+opt.undodir = vim.fn.stdpath('data') .. ".undodir"
 opt.undofile = true
 
 --opt.foldmethod = "expr"

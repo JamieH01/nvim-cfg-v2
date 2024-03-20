@@ -2,7 +2,6 @@ local core = {
     {
         'VonHeikemen/lsp-zero.nvim', 
         branch = 'v3.x',
-        config = setup, 
     },
     'neovim/nvim-lspconfig',
     'hrsh7th/nvim-cmp',
@@ -122,5 +121,7 @@ function setup ()
 
     lsp_zero.setup()
 end
+
+setup()
 
 return {core,  extentions}

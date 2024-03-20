@@ -22,8 +22,11 @@ deps = {
         "williamboman/mason.nvim",
         config = function()
             require("mason").setup{}
-        end
+        end,
+        dependencies = {
+            { 'williamboman/mason-lspconfig.nvim' }
+        },
     },
 }
 
-require("lazy").setup({deps, {import = "plugins"} })
+require("lazy").setup({deps, {import = "plugins"}, require("lsp") })
