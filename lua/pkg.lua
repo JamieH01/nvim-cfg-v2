@@ -17,7 +17,6 @@ deps = {
     "nvim-tree/nvim-web-devicons",
     "MunifTanjim/nui.nvim",
     "rcarriga/nvim-notify",
-    'hrsh7th/cmp-nvim-lsp',
 
     {
         "williamboman/mason.nvim",
@@ -28,6 +27,33 @@ deps = {
             { 'williamboman/mason-lspconfig.nvim' }
         },
     },
+
+
 }
 
-require("lazy").setup({deps, {import = "plugins"}, require("lsp") })
+local core = {
+    {
+        'VonHeikemen/lsp-zero.nvim', 
+        branch = 'v3.x',
+    },
+    'neovim/nvim-lspconfig',
+    {'hrsh7th/nvim-cmp',
+        dependencies = { 'hrsh7th/cmp-nvim-lsp' },
+    },
+}
+
+local extentions = {
+    'hrsh7th/cmp-vsnip',
+    'hrsh7th/vim-vsnip',
+    'alaviss/tree-sitter-nim',
+    'simrat39/rust-tools.nvim',
+    'p00f/clangd_extensions.nvim',
+
+    {
+        'mrcjkb/haskell-tools.nvim',
+        version = '^3', -- Recommended
+        ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
+    }
+}
+
+require("lazy").setup({deps, core, extentions, {import = "plugins"}})

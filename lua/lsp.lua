@@ -1,25 +1,3 @@
-local core = {
-    {
-        'VonHeikemen/lsp-zero.nvim', 
-        branch = 'v3.x',
-    },
-    'neovim/nvim-lspconfig',
-    'hrsh7th/nvim-cmp',
-}
-
-local extentions = {
-    'L3MON4D3/LuaSnip',
-    'alaviss/tree-sitter-nim',
-    'simrat39/rust-tools.nvim',
-    'p00f/clangd_extensions.nvim',
-
-    {
-        'mrcjkb/haskell-tools.nvim',
-        version = '^3', -- Recommended
-        ft = { 'haskell', 'lhaskell', 'cabal', 'cabalproject' },
-    }
-}
-
 local lsp_zero = require('lsp-zero')
 local nvim_lsp = require('lspconfig')
 
@@ -73,9 +51,11 @@ vim.api.nvim_create_autocmd('LspAttach', {
 
 
 local cmp = require('cmp')
+require("cmp_nvim_lsp").setup()
 cmp.setup({
     sources = {
         {name = 'nvim_lsp'},
+        {name = 'vsnip'},
     },
     mapping = {
         ['<C-y>'] = cmp.mapping.confirm({select = false}),
@@ -99,7 +79,7 @@ cmp.setup({
     },
     snippet = {
         expand = function(args)
-            require('luasnip').lsp_expand(args.body)
+            vim.fn["vsnip#anonymous"](args.body)
         end,
     },
 })
@@ -119,5 +99,6 @@ require "nvim-treesitter.configs".setup {
 }
 
 lsp_zero.setup()
+
 
 return {core,  extentions}
