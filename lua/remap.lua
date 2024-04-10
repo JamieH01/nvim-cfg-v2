@@ -10,6 +10,9 @@ bind("i", "<C-K>", "*")
 bind("i", "<C-G>", "->")
 bind("i", "<C-H>", "=>")
 
+bind({"n", "v"}, "<S-L>", "$")
+bind({"n", "v"}, "<S-H>", "0")
+
 --move selection
 bind("v", "J", ":m '>+1<CR>gv=gv")
 bind("v", "K", ":m '<-2<CR>gv=gv")
